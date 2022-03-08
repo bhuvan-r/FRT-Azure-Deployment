@@ -1,43 +1,39 @@
 from flask import Flask, render_template, request
-import joblib
-import numpy as np
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.linear_model import PassiveAggressiveClassifier
+import pickle
 import pandas as pd
-
-model_svm = joblib.load('model_predict/svm.pkl')
-#model_lgbm = joblib.load('model_predict/lgbm.pkl')
-model_catboost = joblib.load('model_predict/catboost.pkl')
-tfidf = joblib.load('model_predict/tfidf.pkl')
-word_tokenize = joblib.load('model_predict/underthesea.pkl')
+from sklearn.model_selection import train_test_split
 
 app = Flask(__name__)
+tfvect = TfidfVectorizer(stop_words='english', max_df=0.7)
+loaded_model = pickle.load(open('model_predict/model.pkl', 'rb'))
+dataframe = pd.read_csv('news.csv')
+x = dataframe['text']
+y = dataframe['label']
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=0)
+
+def fake_news_det(news):
+    tfid_x_train = tfvect.fit_transform(x_train)
+    tfid_x_test = tfvect.transform(x_test)
+    input_data = [news]
+    vectorized_input_data = tfvect.transform(input_data)
+    prediction = loaded_model.predict(vectorized_input_data)
+    return prediction
 
 @app.route('/')
-def man():
-    return render_template('home.html') 
+def home():
+    return render_template('index.html')
 
 @app.route('/predict', methods=['POST'])
-
-def home():
-    text = request.form['input']
-    request_model = request.form['model']
-
-    X = word_tokenize(text, format="text")
-    features = tfidf.transform([X]).toarray()
-    
-    if request_model == "2":
-        model = model_catboost
-    elif request_model == "3":
-        model = model_catboost
+def predict():
+    if request.method == 'POST':
+        message = request.form['message']
+        pred = fake_news_det(message)
+        print(pred)
+        return render_template('index.html', prediction=pred)
     else:
-        model = model_svm
-        
-    print(X)
-    print(request_model)  
-    print(model)
-    
-    pred = model.predict_proba(features) [:,1]
+        return render_template('index.html', prediction="Something went wrong")
 
-    return render_template('after.html', proba = pred)
-
-if __name__ == "__main__":
-    app.run(debug=False)
+if __name__ == '__main__':
+    app.run(debug=True)
