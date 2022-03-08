@@ -6,8 +6,8 @@ Fake News Detection System using Machine Learning
 
 • In this Digital Era, where everyone is using online services and the fake news or misinformation has become very common. 
 • To prevent the spread of fake information on social media websites and other online media which may be about political agendas or latest trends, etc. Such news may contain false or exaggerated claims, so a system can be built so that these claims done by the users can be filtered/deleted on the network.
-• These fake news or misleading information is also considered to be another form of spam.
-• Solution: A system is to be built, so such "fake news" will be flagged and filtered. This is achieved by training a Machine Learning model which will have datasets of existing sample fake and real news. 
+• These fake news or misleading information is also considered to be another form of spam. 
+• Solution: A system is to be built, so such "fake news" will be flagged and filtered. This is achieved by training a Machine Learning model which will have datasets of existing sample fake and real news.  
 • In addition, as the news keeps updating the dataset, the ML model will also keep updating to a newer version, so it can detect misinformation more efficiently and effectively.
 
 • Azure Machine Learning Studio is to be used after which the model can be deployed as a Web App service.
