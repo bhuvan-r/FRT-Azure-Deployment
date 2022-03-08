@@ -6,6 +6,7 @@
   <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link rel="icon" type="image/png" href="static/img/favicon.png" sizes="16x16">
 <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
@@ -16,17 +17,17 @@
 	<h1>Fake News Detection</h1>
 
     <form action="{{ url_for('predict')}}" method="POST">
-    	<textarea  name="message" rows="6" cols="50" required="required" style="font-size: 18pt"></textarea>
+    	<textarea  name="message" rows="5" cols="50" required="required" style="font-size: 18pt"></textarea>
 		<br> </br>
         <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
 
         	<div class="results">
 
 	{% if prediction == ['FAKE']%}
-	<img src='static/img/fake.jpg' alt="fake" width="500" height="325" >
+	<img src='static/img/fake.jpg' alt="fake" width="300" height="195" >
 	<h2 style="color:red;">It is Fake News! </h2>
 	{% elif prediction == ['REAL']%}
-				<img src='static/img/real.jpg' alt="real" width="500" height="325" >
+				<img src='static/img/real.jpg' alt="real" width="300" height="195" >
 				<h2 style="color:green;"><b>It is Real News!</b></h2>
 	{% endif %}
 
