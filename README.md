@@ -23,7 +23,7 @@ Fake News Detection System using Machine Learning
 
 # Youtube Video
 
-Demo of the project: 
+Demo of the project: To be uploaded shortly
 
 
 # Sample Cases from the dataset
