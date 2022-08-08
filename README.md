@@ -2,6 +2,12 @@
 
 Fake News Detection System using Machine Learning
 
+
+# Usage
+
+`https://fakenewsdetection-by-bhuvan.azurewebsites.net/`
+
+
 # About
 
 • In this Digital Era, where everyone is using online services and the fake news or misinformation has become very common. 
@@ -14,11 +20,6 @@ Fake News Detection System using Machine Learning
 • In the future, features such as detecting any misinformation on an image/video through OCR can be added. Also, the system can detect any inappropriate content or spam on the network.
 • By achieving this, the system aims to make our community a much better, safer, and overall positive place for all the users online.
 
-
-
-# Usage
-
-`https://fakenewsdetection-by-bhuvan.azurewebsites.net/`
 
 
 # Youtube Video
